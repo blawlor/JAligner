@@ -16,7 +16,7 @@
 
 package jaligner.matrix;
 
-import jaligner.ui.filechooser.NamedInputStream;
+import jaligner.util.NamedInputStream;
 import jaligner.util.Commons;
 
 import java.io.BufferedReader;
