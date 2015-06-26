@@ -18,14 +18,14 @@ package jaligner.util;
 
 
 import jaligner.Sequence;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * SequenceParser to sequences from different formats.
@@ -44,7 +44,7 @@ public class SequenceParser {
     /**
      * Logger
      */
-    private static final Logger logger = Logger.getLogger(SequenceParser.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(SequenceParser.class);
 	
 	/**
 	 * Returns a parsed Sequence from a string.
@@ -150,7 +150,7 @@ public class SequenceParser {
 		        try {
 		            reader.close();
 		        } catch (Exception silent) {
-		            logger.log(Level.WARNING, "Failed closing reader: " + silent.getMessage(), silent);
+		            logger.warn("Failed closing reader: " + silent.getMessage(), silent);
 		        }
 		    }
 		}

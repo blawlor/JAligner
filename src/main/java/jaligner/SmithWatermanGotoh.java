@@ -17,8 +17,9 @@
 package jaligner;
 
 import jaligner.matrix.Matrix;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.logging.Logger;
 
 /**
  * An implementation of the Smith-Waterman algorithm with Gotoh's improvement
@@ -58,8 +59,7 @@ public final class SmithWatermanGotoh {
 	/**
 	 * Logger
 	 */
-	private static final Logger logger = Logger
-			.getLogger(SmithWatermanGotoh.class.getName());
+	private static final Logger logger = LoggerFactory.getLogger(SmithWatermanGotoh.class);
 
 	/**
 	 * Aligns two sequences by Smith-Waterman (local)

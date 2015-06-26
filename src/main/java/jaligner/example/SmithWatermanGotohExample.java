@@ -22,11 +22,11 @@ import jaligner.SmithWatermanGotoh;
 import jaligner.formats.Pair;
 import jaligner.matrix.MatrixLoader;
 import jaligner.util.SequenceParser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Example of using JAligner API to align P53 human aganist
@@ -50,7 +50,7 @@ public class SmithWatermanGotohExample {
 	/**
 	 * Logger
 	 */
-	private static final Logger logger = Logger.getLogger(SmithWatermanGotohExample.class.getName());
+	private static final Logger logger = LoggerFactory.getLogger(SmithWatermanGotohExample.class);
 	
 	/**
 	 * 
@@ -70,7 +70,7 @@ public class SmithWatermanGotohExample {
 	        
 	        logger.info("Finished running example");
         } catch (Exception e) {
-        	logger.log(Level.SEVERE, "Failed running example: " + e.getMessage(), e);
+        	logger.error("Failed running example: " + e.getMessage(), e);
         }
     }
 	

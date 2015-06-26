@@ -16,8 +16,9 @@
 package jaligner;
 
 import jaligner.matrix.Matrix;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.logging.Logger;
 
 /**
  * An implementation of the Needleman-Wunsch algorithm with Gotoh's improvement
@@ -32,8 +33,7 @@ public final class NeedlemanWunschGotoh {
 	/**
 	 * Logger
 	 */
-	private static final Logger logger = Logger
-			.getLogger(NeedlemanWunschGotoh.class.getSimpleName());
+	private static final Logger logger = LoggerFactory.getLogger(NeedlemanWunschGotoh.class);
 
 	/**
 	 * Hidden constructor

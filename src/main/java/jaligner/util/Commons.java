@@ -16,13 +16,14 @@
 
 package jaligner.util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.net.JarURLConnection;
 import java.net.URL;
 import java.util.jar.Attributes;
 import java.util.jar.JarFile;
 import java.util.jar.Manifest;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Global constants/variables/settings
@@ -39,8 +40,7 @@ public abstract class Commons {
 	/**
 	 * Logger
 	 */
-	private static final Logger logger = Logger.getLogger(Commons.class
-			.getName());
+	private static final Logger logger = LoggerFactory.getLogger(Commons.class);
 
 	/**
 	 * Build timestamp attribute in the manifest in the jar
@@ -75,7 +75,7 @@ public abstract class Commons {
 		try {
 			userDirectory = System.getProperty("user.dir");
 		} catch (Exception e) {
-			logger.log(Level.WARNING, "Failed getting user current directory: "
+			logger.warn("Failed getting user current directory: "
 					+ e.getMessage(), e);
 		}
 	}
@@ -88,7 +88,7 @@ public abstract class Commons {
 		try {
 			fileSeparator = System.getProperty("file.separator");
 		} catch (Exception e) {
-			logger.log(Level.WARNING, "Failed getting system file separator: "
+			logger.warn("Failed getting system file separator: "
 					+ e.getMessage(), e);
 		}
 	}
@@ -102,7 +102,7 @@ public abstract class Commons {
 		try {
 			lineSeparator = System.getProperty("line.separator");
 		} catch (Exception e) {
-			logger.log(Level.WARNING, "Failed getting system line separator: "
+			logger.warn("Failed getting system line separator: "
 					+ e.getMessage(), e);
 		}
 	}
@@ -115,7 +115,7 @@ public abstract class Commons {
 		try {
 			jnlp = "true".equalsIgnoreCase(System.getProperty("jnlp.enabled"));
 		} catch (Exception e) {
-			logger.log(Level.WARNING, "Failed getting jnlp enabled property: "
+			logger.warn("Failed getting jnlp enabled property: "
 					+ e.getMessage(), e);
 		}
 		setJnlp(jnlp);
@@ -194,7 +194,7 @@ public abstract class Commons {
 		} catch (Exception e) {
 			String message = "Failed getting the current release info: "
 					+ e.getMessage();
-			logger.log(Level.WARNING, message);
+			logger.warn(message);
 		}
 		return null;
 	}

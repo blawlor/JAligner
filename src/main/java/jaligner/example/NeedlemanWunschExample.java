@@ -23,9 +23,9 @@ import jaligner.formats.Pair;
 import jaligner.matrix.Matrix;
 import jaligner.matrix.MatrixGenerator;
 import jaligner.util.SequenceParser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Example of using JAligner API to perform global pairwise sequence alignment
@@ -39,8 +39,7 @@ public class NeedlemanWunschExample {
     /**
      * Logger
      */
-    private static final Logger logger = Logger
-            .getLogger(NeedlemanWunschExample.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(NeedlemanWunschExample.class);
 
     /**
      * 
@@ -65,7 +64,7 @@ public class NeedlemanWunschExample {
 
             logger.info("Finished running example");
         } catch (Exception e) {
-            logger.log(Level.SEVERE, "Failed running example: "
+            logger.error("Failed running example: "
                     + e.getMessage(), e);
         }
     }

@@ -18,6 +18,8 @@ package jaligner.matrix;
 
 import jaligner.util.NamedInputStream;
 import jaligner.util.Commons;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -35,8 +37,6 @@ import java.util.List;
 import java.util.StringTokenizer;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Scoring matrices loader from a jar file or a file system.
@@ -53,13 +53,12 @@ public class MatrixLoader {
 	/**
 	 * The path to the matrices within the package.
 	 */
-	private static final String MATRICES_HOME = "jaligner/matrix/matrices/";
+	private static final String MATRICES_HOME = "/matrices/";
 
 	/**
 	 * Logger
 	 */
-	private static final Logger logger = Logger.getLogger(MatrixLoader.class
-			.getName());
+	private static final Logger logger = LoggerFactory.getLogger(MatrixLoader.class);
 
 	/**
 	 * Loads scoring matrix from Jar file or file system.
@@ -77,8 +76,7 @@ public class MatrixLoader {
 				.countTokens() == 1) {
 			// Matrix does not include the path
 			// Load the matrix from matrices.jar
-			is = MatrixLoader.class.getClassLoader().getResourceAsStream(
-					MATRICES_HOME + matrix);
+			is = MatrixLoader.class.getResourceAsStream(MATRICES_HOME + matrix);
 		} else {
 			// Matrix includes the path information
 			// Load the matrix from the file system
@@ -87,7 +85,7 @@ public class MatrixLoader {
 			} catch (Exception e) {
 				String message = "Failed opening input stream: "
 						+ e.getMessage();
-				logger.log(Level.SEVERE, message, e);
+				logger.error(message, e);
 				throw new MatrixLoaderException(message);
 			}
 		}
@@ -130,7 +128,7 @@ public class MatrixLoader {
 		} catch (Exception e) {
 			String message = "Failed reading from input stream: "
 					+ e.getMessage();
-			logger.log(Level.SEVERE, message, e);
+			logger.error(message, e);
 			throw new MatrixLoaderException(message);
 		}
 
@@ -156,7 +154,7 @@ public class MatrixLoader {
 		} catch (Exception e) {
 			String message = "Failed reading from input stream: "
 					+ e.getMessage();
-			logger.log(Level.SEVERE, message, e);
+			logger.error(message, e);
 			throw new MatrixLoaderException(message);
 		}
 		logger.info("Finished loading scoring matrix");
@@ -186,7 +184,7 @@ public class MatrixLoader {
 			} catch (Exception e) {
 				String message = "Failed opening a connection to jar: "
 						+ e.getMessage();
-				logger.log(Level.SEVERE, message, e);
+				logger.error(message, e);
 				throw new MatrixLoaderException(message);
 			}
 			Enumeration<JarEntry> entries = jar.entries();
@@ -210,7 +208,7 @@ public class MatrixLoader {
 			} catch (Exception e) {
 				String message = "Failed decoding matrices url: "
 						+ e.getMessage();
-				logger.log(Level.SEVERE, message, e);
+				logger.error(message, e);
 				throw new MatrixLoaderException(message);
 			}
 			File dir = new File(home);
